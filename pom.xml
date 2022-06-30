@@ -15,5 +15,12 @@
         <module>mall-order</module>
         <module>mall-goods</module>
         <module>mall-stock</module>
+        <module>renren-fast</module>
+        <module>renren-generator</module>
+        <module>mall-common</module>
+        <module>mall-common</module>
+        <module>mall-common</module>
+        <module>mall-common</module>
+        <module>mall-common</module>
     </modules>
 </project>
