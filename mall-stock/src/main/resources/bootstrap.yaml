@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: mall-stock
+  profiles:
+    active: dev # 开发环境 dev
+  cloud:
+    nacos:
+      server-addr: 121.36.99.140:8848 # nacos地址
+      config:
+        file-extension: yaml # 配置文件后缀名
+        namespace: a23d9904-b305-4426-a84e-d3231a7944f9 #mall-stock

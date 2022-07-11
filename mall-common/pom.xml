@@ -15,4 +15,6 @@
     <version>0.0.1-SNAPSHOT</version>
 
     <description>存放每个微服务公共的依赖、Bean和工具类等</description>
+
+
 </project>

@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: mall-coupon
+  profiles:
+    active: dev # 开发环境 dev
+  cloud:
+    nacos:
+      server-addr: 121.36.99.140:8848 # nacos地址
+      config:
+        file-extension: yaml # 配置文件后缀名
+        namespace: 65cd63f7-1afd-4c3b-9957-b6c762639e30
+#        group: dev

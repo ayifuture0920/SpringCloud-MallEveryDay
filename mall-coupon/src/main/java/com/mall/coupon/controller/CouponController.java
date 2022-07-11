@@ -4,6 +4,9 @@ import java.util.Arrays;
 import java.util.Map;
 
 import javax.annotation.Resource;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
 
 import com.mall.coupon.entity.CouponEntity;
@@ -20,6 +23,7 @@ import com.common.utils.R;
  * @email tangqingao@foxmail.com
  * @date 2022-06-30 12:16:41
  */
+@RefreshScope
 @RestController
 @RequestMapping("coupon/coupon")
 public class CouponController {
@@ -35,7 +39,6 @@ public class CouponController {
 
         return R.ok().put("page", page);
     }
-
 
     /**
      * 信息

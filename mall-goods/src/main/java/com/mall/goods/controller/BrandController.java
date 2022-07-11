@@ -2,8 +2,11 @@ package com.mall.goods.controller;
 
 import com.common.utils.PageUtils;
 import com.common.utils.R;
+import com.common.validator.AddGroup;
+import com.common.validator.UpdateGroup;
 import com.mall.goods.entity.BrandEntity;
 import com.mall.goods.service.IBrandService;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -27,12 +30,11 @@ public class BrandController {
      * 列表
      */
     @GetMapping("/list")
-    public R list(@RequestParam Map<String, Object> params){
+    public R list( @RequestParam Map<String, Object> params){
         PageUtils page = brandService.queryPage(params);
 
         return R.ok().put("page", page);
     }
-
 
     /**
      * 信息
@@ -48,9 +50,8 @@ public class BrandController {
      * 保存
      */
     @PostMapping("/save")
-    public R save(@RequestBody BrandEntity brand){
+    public R save(@Validated({AddGroup.class}) @RequestBody BrandEntity brand){
         brandService.save(brand);
-
         return R.ok();
     }
 
@@ -58,7 +59,16 @@ public class BrandController {
      * 修改
      */
     @PutMapping("/update")
-    public R update(@RequestBody BrandEntity brand){
+    public R update(@Validated({UpdateGroup.class}) @RequestBody BrandEntity brand){
+        System.out.println("brand = " + brand);
+        brandService.updateById(brand);
+        return R.ok();
+    }
+    /**
+     * 修改状态
+     */
+    @PutMapping("/update/status")
+    public R updateStatus(@Validated({UpdateGroup.class}) @RequestBody BrandEntity brand){
         brandService.updateById(brand);
 
         return R.ok();

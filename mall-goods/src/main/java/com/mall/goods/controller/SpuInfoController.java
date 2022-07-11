@@ -1,9 +1,13 @@
 package com.mall.goods.controller;
 
+import com.common.to.SpuBoundTo;
 import com.common.utils.PageUtils;
 import com.common.utils.R;
 import com.mall.goods.entity.SpuInfoEntity;
+import com.mall.goods.feign.ICouponFeignService;
 import com.mall.goods.service.ISpuInfoService;
+import com.mall.goods.vo.SpuSaveVo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -30,7 +34,7 @@ public class SpuInfoController {
      */
     @GetMapping("/list")
     public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = spuInfoService.queryPage(params);
+        PageUtils page = spuInfoService.queryPageByCondition(params);
 
         return R.ok().put("page", page);
     }
@@ -47,11 +51,14 @@ public class SpuInfoController {
     }
 
     /**
-     * 保存
+     * 新增商品
      */
     @PostMapping("/save")
-    public R save(@RequestBody SpuInfoEntity spuInfo){
-		spuInfoService.save(spuInfo);
+    //@RequiresPermissions("product:spuinfo:save")
+    public R save(@RequestBody SpuSaveVo vo){
+        //spuInfoService.save(spuInfo);
+
+        spuInfoService.saveSpuInfo(vo);
 
         return R.ok();
     }

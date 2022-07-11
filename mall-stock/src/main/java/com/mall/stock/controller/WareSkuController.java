@@ -28,6 +28,7 @@ public class WareSkuController {
 
     /**
      * 列表
+     * 查询商品库存
      */
     @GetMapping("/list")
     public R list(@RequestParam Map<String, Object> params){

@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: mall-third-party
+    profiles:
+      active: dev # 开发环境 dev
+  cloud:
+    nacos:
+      server-addr: 121.36.99.140:8848 # nacos地址
+      config:
+        file-extension: yaml # 配置文件后缀名
+        namespace: c7aed99b-105a-421b-8120-12b8536bb1ef #mall-third-party
+        extension-configs:
+          - data-id: oss.yaml
+            group: dev
+            refresh: true
+#        group: dev

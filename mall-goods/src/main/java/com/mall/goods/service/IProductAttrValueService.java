@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.common.utils.PageUtils;
 import com.mall.goods.entity.ProductAttrValueEntity;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -15,4 +16,6 @@ import java.util.Map;
  */
 public interface IProductAttrValueService extends IService<ProductAttrValueEntity> {
     PageUtils queryPage(Map<String, Object> params);
+
+    List<ProductAttrValueEntity> baseAttrlistforspu(Long spuId);
 }

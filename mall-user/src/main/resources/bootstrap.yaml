@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: mall-user
+  profiles:
+    active: dev # 开发环境 dev
+  cloud:
+    nacos:
+      server-addr: 121.36.99.140:8848
+      config:
+        file-extension: yaml # 配置文件后缀名
+        namespace: 05fbb967-d606-44f4-b97e-08560475f590 #mall-user

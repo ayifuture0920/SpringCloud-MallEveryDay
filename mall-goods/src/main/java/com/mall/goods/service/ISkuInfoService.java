@@ -16,5 +16,7 @@ import java.util.Map;
 public interface ISkuInfoService extends IService<SkuInfoEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
+
+    PageUtils queryPageByCondition(Map<String, Object> params);
 }
 

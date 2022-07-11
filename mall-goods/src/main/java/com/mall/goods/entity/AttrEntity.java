@@ -1,6 +1,7 @@
 package com.mall.goods.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
@@ -17,7 +18,6 @@ import java.io.Serializable;
  */
 @Data
 @TableName("gms_attr")
-@AllArgsConstructor
 public class AttrEntity implements Serializable {
     private static final long serialVersion = 1L;
 
@@ -62,4 +62,28 @@ public class AttrEntity implements Serializable {
      * 快速展示【是否展示在介绍上；0-否 1-是】，在sku中仍然可以调整
      */
     private Integer showDesc;
+
+    /**
+     * 规格参数所属分组id
+     */
+    @TableField(exist = false)
+    private Long attrGroupId;
+
+    /**
+     * 规格参数所属分类名称
+     */
+    @TableField(exist = false)
+    private String catelogName;
+
+    /**
+     * 规格参数所属分组名称
+     */
+    @TableField(exist = false)
+    private String groupName;
+
+    /**
+     * 规格参数所属分类名称路径
+     */
+    @TableField(exist = false)
+    private Long[] catelogPath;
 }

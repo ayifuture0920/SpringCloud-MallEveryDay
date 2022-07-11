@@ -3,8 +3,14 @@ package com.mall.goods.controller;
 import com.common.utils.PageUtils;
 import com.common.utils.R;
 
+import com.common.validator.AddGroup;
 import com.mall.goods.entity.AttrAttrgroupRelationEntity;
+import com.mall.goods.entity.AttrEntity;
+import com.mall.goods.feign.ICouponFeignService;
 import com.mall.goods.service.IAttrAttrgroupRelationService;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -18,6 +24,7 @@ import java.util.Map;
  * @email tangqingao@foxmail.com
  * @date 2022-06-27
  */
+@RefreshScope
 @RestController
 @RequestMapping("goods/attrattrgrouprelation")
 public class AttrAttrgroupRelationController {
@@ -31,10 +38,8 @@ public class AttrAttrgroupRelationController {
     @GetMapping("/list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = attrAttrgroupRelationService.queryPage(params);
-
         return R.ok().put("page", page);
     }
-
 
     /**
      * 信息
@@ -50,7 +55,7 @@ public class AttrAttrgroupRelationController {
      * 保存
      */
     @PostMapping("/save")
-    public R save(@RequestBody AttrAttrgroupRelationEntity attrAttrgroupRelation){
+    public R save( @RequestBody AttrAttrgroupRelationEntity attrAttrgroupRelation ){
         attrAttrgroupRelationService.save(attrAttrgroupRelation);
 
         return R.ok();

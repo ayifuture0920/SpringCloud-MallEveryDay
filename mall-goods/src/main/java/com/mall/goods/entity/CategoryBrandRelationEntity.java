@@ -1,8 +1,10 @@
 package com.mall.goods.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -31,9 +33,11 @@ public class CategoryBrandRelationEntity implements Serializable {
     /**
      * 品牌name
      */
+    @TableField(exist = false)
     private String brandName;
     /**
      * 分类name
      */
+    @TableField(exist = false)
     private String catelogName;
 }

@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: mall-gateway
+#  profiles:
+#    active: dev # 开发环境 dev
+  cloud:
+    nacos:
+      server-addr: 121.36.99.140:8848 # nacos地址
+      config:
+        file-extension: yaml # 配置文件后缀名
+        namespace: a775d751-4036-4232-acf9-ab8a6d393a0f #mall-gateway
+#        group: dev

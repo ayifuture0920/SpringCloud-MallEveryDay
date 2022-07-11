@@ -23,7 +23,7 @@ public class SkuInfoEntity implements Serializable {
 	/**
 	 * skuId
 	 */
-	@TableId(type = IdType.AUTO)
+	@TableId
 	private Long skuId;
 	/**
 	 * spuId

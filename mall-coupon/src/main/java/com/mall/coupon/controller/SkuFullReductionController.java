@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.Map;
 
 import javax.annotation.Resource;
+
+import com.common.to.SkuReductionTo;
 import org.springframework.web.bind.annotation.*;
 
 import com.mall.coupon.entity.SkuFullReductionEntity;
@@ -26,6 +28,12 @@ public class SkuFullReductionController {
     @Resource
     private ISkuFullReductionService skuFullReductionService;
 
+    @PostMapping("/saveinfo")
+    public R saveInfo(@RequestBody SkuReductionTo reductionTo){
+
+        skuFullReductionService.saveSkuReduction(reductionTo);
+        return R.ok();
+    }
     /**
      * 列表
      */

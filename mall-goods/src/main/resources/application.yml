@@ -5,11 +5,31 @@ spring:
     username: remote_user
     password: 139494tang
     url: jdbc:mysql://150.158.147.6:3306/mall_gms?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
-#mybatis-plus:
+
+  cloud:
+    nacos:
+      server-addr: 121.36.99.140:8848
+  application:
+    name: mall-goods
+  main:
+    allow-circular-references: true #允许环形加载bean，即互相引用
+    web-application-type: reactive
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+
+mybatis-plus:
   type-aliases-package: com.mall.goods.entity
-#  mapper-locations: classpath:/mapper/**/*.xml
+  mapper-locations: classpath:/mapper/**/*.xml
   global-config:
     db-config:
       id-type: auto
+      logic-delete-value: 0 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 1 #逻辑未删除的值(默认为 0)
+      logic-delete-field: show_status # 全局逻辑删除的实体字段名
+
 server:
   port: 8000
+logging:
+  level:
+    com.mall: debug
+

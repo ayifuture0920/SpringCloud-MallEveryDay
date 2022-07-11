@@ -10,6 +10,7 @@ import com.mall.goods.mapper.ProductAttrValueMapper;
 import com.mall.goods.service.IProductAttrValueService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
 
 @Service("productAttrValueService")
@@ -28,4 +29,11 @@ public class ProductAttrValueServiceImpl extends ServiceImpl<ProductAttrValueMap
 
         return new PageUtils(page);
     }
+
+    @Override
+    public List<ProductAttrValueEntity> baseAttrlistforspu(Long spuId) {
+        List<ProductAttrValueEntity> entities = this.baseMapper.selectList(new QueryWrapper<ProductAttrValueEntity>().eq("spu_id", spuId));
+        return entities;
+    }
+
 }

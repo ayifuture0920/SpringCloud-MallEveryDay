@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.Map;
 
 import javax.annotation.Resource;
+
+import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.*;
 
 import com.mall.coupon.entity.SpuBoundsEntity;
@@ -32,7 +34,6 @@ public class SpuBoundsController {
     @GetMapping("/list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = spuBoundsService.queryPage(params);
-
         return R.ok().put("page", page);
     }
 
@@ -50,8 +51,10 @@ public class SpuBoundsController {
     /**
      * 保存
      */
+
     @PostMapping("/save")
     public R save(@RequestBody SpuBoundsEntity spuBounds){
+        System.out.println("spuBounds = " + spuBounds);
 		spuBoundsService.save(spuBounds);
 
         return R.ok();

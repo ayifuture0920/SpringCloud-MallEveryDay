@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -25,13 +26,12 @@ public class CategoryController {
     private ICategoryService categoryService;
 
     /**
-     * 列表
+     * 查出所有商品分类以及子分类，以树形结构组装起来，类似于京东首页商品分类框
      */
-    @GetMapping("/list")
-    public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = categoryService.queryPage(params);
-
-        return R.ok().put("page", page);
+    @GetMapping("/list/tree")
+    public R list(){
+        List<CategoryEntity> entityList = categoryService.listWithTree();
+        return R.ok().put("data", entityList);
     }
 
 
@@ -42,7 +42,7 @@ public class CategoryController {
     public R info(@PathVariable("catId") Long catId){
         CategoryEntity category = categoryService.getById(catId);
 
-        return R.ok().put("category", category);
+        return R.ok().put("data", category);
     }
 
     /**
@@ -51,9 +51,18 @@ public class CategoryController {
     @PostMapping("/save")
     public R save(@RequestBody CategoryEntity category){
         categoryService.save(category);
-
         return R.ok();
     }
+
+    /**
+     * 批量修改
+     */
+    @PutMapping("/update/sort")
+    public R updateSort(@RequestBody CategoryEntity[] category){
+        categoryService.updateBatchById(Arrays.asList(category));
+        return R.ok();
+    }
+
 
     /**
      * 修改
@@ -70,8 +79,7 @@ public class CategoryController {
      */
     @DeleteMapping("/delete")
     public R delete(@RequestBody Long[] catIds){
-        categoryService.removeByIds(Arrays.asList(catIds));
-
+        categoryService.removeMenuByIds(Arrays.asList(catIds));
         return R.ok();
     }
 
